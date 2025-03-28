@@ -1,0 +1,163 @@
+/* Basic Reset & Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a2a3a, #2c3e50); /* Dark blue gradient */
+    color: #ecf0f1; /* Light text color */
+    overflow: hidden; /* Hide shapes overflowing */
+    position: relative; /* Needed for absolute positioned shapes */
+}
+
+/* Animated Background Shapes */
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place behind content */
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1; /* Subtle */
+    filter: blur(30px); /* Soft edges */
+    animation: float 20s infinite ease-in-out alternate;
+}
+
+.shape1 {
+    width: 300px;
+    height: 300px;
+    background: #3498db; /* Blue */
+    top: 10%;
+    left: 15%;
+    animation-duration: 22s;
+}
+
+.shape2 {
+    width: 200px;
+    height: 200px;
+    background: #e74c3c; /* Red */
+    bottom: 15%;
+    right: 20%;
+    animation-duration: 18s;
+    animation-delay: -5s; /* Start at a different point */
+}
+
+.shape3 {
+    width: 150px;
+    height: 150px;
+    background: #9b59b6; /* Purple */
+    top: 40%;
+    right: 10%;
+    animation-duration: 25s;
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+    100% { transform: translateY(-30px) translateX(20px) rotate(45deg); }
+}
+
+/* Main Content Container */
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.05); /* Subtle glass effect */
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1; /* Ensure container is above background */
+    animation: fadeInScale 0.8s ease-out forwards; /* Entry animation */
+    opacity: 0; /* Start hidden for animation */
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Download Button Styling */
+.btn-download {
+    background: linear-gradient(135deg, #3498db, #2980b9); /* Blue gradient */
+    color: #fff;
+    border: none;
+    padding: 18px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px; /* Pill shape */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+}
+
+.btn-download .icon {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.btn-download:hover {
+    background: linear-gradient(135deg, #2980b9, #3498db); /* Slightly shifted gradient */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4); /* Glow effect */
+}
+
+.btn-download:hover .icon {
+    transform: translateY(2px); /* Subtle icon bounce */
+}
+
+.btn-download:active {
+    transform: translateY(-1px); /* Press down effect */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Managed By Text */
+.managed-by {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #bdc3c7; /* Lighter grey */
+    opacity: 0.8;
+}
+
+/* Responsive adjustments (Optional but good practice) */
+@media (max-width: 600px) {
+    .container {
+        padding: 30px;
+    }
+    .btn-download {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+    .managed-by {
+        margin-top: 20px;
+        font-size: 0.8rem;
+    }
+    .shape1 { width: 200px; height: 200px; }
+    .shape2 { width: 150px; height: 150px; }
+    .shape3 { width: 100px; height: 100px; }
+}
